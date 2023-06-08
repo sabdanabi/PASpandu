@@ -1,4 +1,4 @@
-package com.example.pts_sabdanabi;
+package com.example.pts_sabdanabi.logsign;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pts_sabdanabi.News;
+import com.example.pts_sabdanabi.MainActivity;
+import com.example.pts_sabdanabi.R;
 
 import java.util.ArrayList;
 
@@ -32,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         create = findViewById(R.id.create);
 
 
-        DataHolder dataHolder = DataHolder.getInstance();
+        News dataHolder = News.getInstance();
         ArrayList<String> dataListEmail = dataHolder.getDataListEmail();
         ArrayList<String> dataListPasswod = dataHolder.getDataListPassword();
 

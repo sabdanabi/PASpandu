@@ -2,19 +2,19 @@ package com.example.pts_sabdanabi;
 
 import java.util.ArrayList;
 
-public class DataHolder {
-    private static DataHolder instance;
+public class News {
+    private static News instance;
     private ArrayList<String> dataListEmail;
     private ArrayList<String> dataListPassword;
 
-    private DataHolder() {
+    private News() {
         dataListEmail = new ArrayList<>();
         dataListPassword = new ArrayList<>();
     }
 
-    public static DataHolder getInstance() {
+    public static News getInstance() {
         if (instance == null) {
-            instance = new DataHolder();
+            instance = new News();
         }
         return instance;
     }

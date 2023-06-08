@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Response{
 
 	@SerializedName("data")
-	private Data data;
+	private NewsData data;
 
 	@SerializedName("success")
 	private boolean success;
@@ -13,11 +13,11 @@ public class Response{
 	@SerializedName("message")
 	private Object message;
 
-	public void setData(Data data){
+	public void setData(NewsData data){
 		this.data = data;
 	}
 
-	public Data getData(){
+	public NewsData getData(){
 		return data;
 	}
 

@@ -1,4 +1,4 @@
-package com.example.pts_sabdanabi;
+package com.example.pts_sabdanabi.logsign;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pts_sabdanabi.News;
+import com.example.pts_sabdanabi.R;
 
 public class Register extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(this, "Email Kosong", Toast.LENGTH_SHORT).show();
             }else {
 
-                DataHolder dataHolder = DataHolder.getInstance();
+                News dataHolder = News.getInstance();
                 dataHolder.addToDataListEmail(email.getText().toString());
                 dataHolder.addToDataListPassword(password.getText().toString());
                 Intent intent = new Intent(Register.this, LoginActivity.class);

@@ -1,4 +1,4 @@
-package com.example.pts_sabdanabi.api;
+package com.example.pts_sabdanabi;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

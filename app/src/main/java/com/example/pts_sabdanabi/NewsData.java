@@ -3,7 +3,7 @@ package com.example.pts_sabdanabi;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Data{
+public class NewsData {
 
 	@SerializedName("image")
 	private String image;
@@ -18,7 +18,7 @@ public class Data{
 	private String title;
 
 	@SerializedName("posts")
-	private List<PostsItem> posts;
+	private List<NewsTampilan> posts;
 
 	public void setImage(String image){
 		this.image = image;
@@ -52,11 +52,11 @@ public class Data{
 		return title;
 	}
 
-	public void setPosts(List<PostsItem> posts){
+	public void setPosts(List<NewsTampilan> posts){
 		this.posts = posts;
 	}
 
-	public List<PostsItem> getPosts(){
+	public List<NewsTampilan> getPosts(){
 		return posts;
 	}
 }
