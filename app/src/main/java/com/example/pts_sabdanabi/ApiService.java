@@ -25,8 +25,8 @@ public interface ApiService {
             @Field("email") String email,
             @Field("password") String password);
 
-    @GET("antara/terbaru/")
-    Call<NewsData> getDetailNews();
+    @GET("antara/terbaru")
+    Call<ResponseNews> getDetailNews();
 
 
 

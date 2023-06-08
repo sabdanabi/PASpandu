@@ -39,18 +39,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         ApiService service = APIHeadClient.getRetrofitInstance().create(ApiService.class);
-        Call<NewsData> callNewsList = service.getDetailNews();
+        Call<ResponseNews> callNewsList = service.getDetailNews();
 
-        callNewsList.enqueue(new Callback<NewsData>() {
+        callNewsList.enqueue(new Callback<ResponseNews>() {
             @Override
-            public void onResponse(Call<NewsData> call, Response<NewsData> response) {
-                List<NewsTampilan> news = response.body().getPosts();
+            public void onResponse(Call<ResponseNews> call, Response<ResponseNews> response) {
+                List<PostsItem> news = response.body().getData().getPosts();
+
                 NewsAdapter adapter = new NewsAdapter(news);
                 binding.news.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<NewsData> call, Throwable t) {
+            public void onFailure(Call<ResponseNews> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });

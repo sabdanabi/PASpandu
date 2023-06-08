@@ -17,7 +17,7 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    private List<NewsTampilan> localDataSet;
+    private List<PostsItem> localDataSet;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView newstitle;
         private final ImageView tnnewshome;
@@ -31,7 +31,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             tnnewshome = view.findViewById(R.id.picture);
         }
     }
-    public NewsAdapter(List<NewsTampilan> dataSet) {
+    public NewsAdapter(List<PostsItem> dataSet) {
         localDataSet = dataSet;
     }
 
@@ -49,13 +49,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
-        NewsTampilan news = localDataSet.get(position);
+        PostsItem news = localDataSet.get(position);
         String title = news.getTitle();
         String thumbnail = news.getThumbnail();
 
 
         viewHolder.newstitle.setText(title);
-        viewHolder.tnnewshome.setImageResource(Integer.parseInt(thumbnail));
 
 
         Picasso.get()
