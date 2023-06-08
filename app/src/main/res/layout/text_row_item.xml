@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/film_name"
+        android:id="@+id/news_name"
         android:layout_width="360dp"
         android:layout_height="70dp"
         tools:text="@tools:sample/full_names"

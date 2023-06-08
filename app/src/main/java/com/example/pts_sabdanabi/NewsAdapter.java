@@ -15,22 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class NewsHomeAdapter extends RecyclerView.Adapter<NewsTampilan.ViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    private List<News> localDataSet;
-
-    public NewsAdapter(List<News> dataSet) {
-        localDataSet = dataSet;
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.text_row_item, viewGroup, false);
-
-        return new ViewHolder(view);
-    }
-
+    private List<NewsTampilan> localDataSet;
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView newstitle;
         private final ImageView tnnewshome;
@@ -44,6 +31,20 @@ public class NewsHomeAdapter extends RecyclerView.Adapter<NewsTampilan.ViewHolde
             tnnewshome = view.findViewById(R.id.picture);
         }
     }
+    public NewsAdapter(List<NewsTampilan> dataSet) {
+        localDataSet = dataSet;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.text_row_item, viewGroup, false);
+
+        return new ViewHolder(view);
+    }
+
+
+
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
@@ -53,31 +54,21 @@ public class NewsHomeAdapter extends RecyclerView.Adapter<NewsTampilan.ViewHolde
         String thumbnail = news.getThumbnail();
 
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyy-mm-dd");
-        Date date;
-        try {
-            date = simpleDateFormat.parse(releaseDate);
-            simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
-            releaseDate = simpleDateFormat.format(date);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        viewHolder.newstitle.setText(title);
+        viewHolder.tnnewshome.setImageResource(Integer.parseInt(thumbnail));
 
-        viewHolder.tvMovieTitle.setText(title);
-        viewHolder.tvReleaseDate.setText(releaseDate);
-        viewHolder.tvMovieRating.setText(movieRating);
 
         Picasso.get()
-                .load(urlPoster)
+                .load(thumbnail)
                 .placeholder(R.drawable.image_placeholder)
                 .error(R.drawable.image_placeholder_error)
-                .into(viewHolder.imgMoviePoster);
+                .into(viewHolder.tnnewshome);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(viewHolder.itemView.getContext(), DetailActivity.class);
-                intent.putExtra("movie_id",String.valueOf(movie.getId()));
+                intent.putExtra("news_id",String.valueOf(news.getLink()));
                 viewHolder.itemView.getContext().startActivity(intent);
             }
         });
