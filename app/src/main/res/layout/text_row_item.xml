@@ -4,32 +4,35 @@
     android:layout_width="362dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="176dp"
+    android:layout_height="100dp"
     android:layout_alignParentLeft="true"
     android:layout_marginLeft="16dp"
     android:layout_alignParentTop="true"
     android:layout_marginTop="20dp"
-    android:background="@drawable/kotak"
+    android:background="@drawable/bg"
     >
 
     <ImageView
         android:id="@+id/picture"
-        tools:src="@tools:sample/avatars"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/news_name"
-        android:layout_width="360dp"
+        android:layout_width="250dp"
         android:layout_height="70dp"
-        tools:text="@tools:sample/full_names"
+        android:layout_marginStart="124dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/picture"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bg"
 
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@tools:sample/full_names" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

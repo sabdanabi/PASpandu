@@ -7,24 +7,27 @@
     tools:context=".MainActivity"
     android:background="@drawable/kotak">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menu"
+    <TextView
+        android:id="@+id/tren"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="220dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:listitem="@layout/menus" />
+        android:layout_height="match_parent"
+        android:text="Terending News"
+        android:textSize="30dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="20dp"
+        />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/text_row_item"
-        app:layout_constraintTop_toBottomOf="@id/menu"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
