@@ -18,7 +18,7 @@
         tools:listitem="@layout/menus" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_Film"
+        android:id="@+id/news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="0dp"

@@ -31,68 +31,57 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(view);
 
         Intent intent = getIntent();
-        String newsId = intent.getStringExtra("movie_id");
+        String newsTitle = intent.getStringExtra("news_title");
+        String newsdesc = intent.getStringExtra("news_desc");
+        String newsposter = intent.getStringExtra("news_poster");
+        String newsDate = intent.getStringExtra("news_date");
 
-        getDetailNews(newsId);
+        getDetailNews(newsTitle,newsdesc,newsposter,newsDate);
     }
-    private void getDetailNews(String newsId){
-        progressDialog = new ProgressDialog(DetailActivity.this);
-        progressDialog.setMessage("Loading....");
-        progressDialog.show();
-
-        /*Create handle for the RetrofitInstance interface*/
-        ApiService service = APIHeadClient.getRetrofitInstance().create(ApiService.class);
-        Call<NewsTampilan> call = service.getDetailNews(newsId);
-
-        call.enqueue(new Callback<NewsTampilan>() {
-            @Override
-            public void onResponse(Call<NewsTampilan> call, Response<NewsTampilan> response) {
-                progressDialog.dismiss();
-                NewsTampilan newsberita = response.body();
-                setDataUI(newsberita);
-            }
-
-            @Override
-            public void onFailure(Call<NewsTampilan> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(DetailActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    private void setDataUI(NewsTampilan news) {
-        binding.newsTitle.setText(news.getTitle());
-        binding.newsDesc.setText(news.getDescription());
-        binding.date.setText(news.getPubDate());
-//        binding.newsPoster.setImageResource(news.getThumbnail());
-        setShareButton(news.getLink());
-
-
-        /*String releaseDate = movie.getReleaseDate();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyy-mm-dd");
-        Date date;
-        try {
-            date = simpleDateFormat.parse(releaseDate);
-            simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
-            releaseDate = simpleDateFormat.format(date);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        binding.movieReleaseDate.setText(getString(R.string.release, releaseDate));*/
-
-
-//        String baseUrlImage = getString(R.string.base_url_image_w500);
-        String urlPoster = news.getThumbnail();
+    private void getDetailNews(String newsTilte, String newsDesc, String newsPoster,String newsDate) {
+        binding.newsTitle.setText(newsTilte);
+        binding.newsDesc.setText(newsDesc);
+        binding.date.setText(newsDate);
         Picasso.get()
-                .load(urlPoster)
+                .load(newsPoster)
                 .placeholder(R.drawable.image_placeholder)
                 .error(R.drawable.image_placeholder_error)
                 .into(binding.newsPoster);
-
-
-
-
-
     }
+//    private void setDataUI(NewsTampilan news) {
+//        binding.newsTitle.setText(news.getTitle());
+//        binding.newsDesc.setText(news.getDescription());
+//        binding.date.setText(news.getPubDate());
+////        binding.newsPoster.setImageResource(news.getThumbnail());
+//        setShareButton(news.getLink());
+//
+//
+//        /*String releaseDate = movie.getReleaseDate();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyy-mm-dd");
+//        Date date;
+//        try {
+//            date = simpleDateFormat.parse(releaseDate);
+//            simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
+//            releaseDate = simpleDateFormat.format(date);
+//        } catch (ParseException e) {
+//            throw new RuntimeException(e);
+//        }
+//        binding.movieReleaseDate.setText(getString(R.string.release, releaseDate));*/
+//
+//
+////        String baseUrlImage = getString(R.string.base_url_image_w500);
+//        String urlPoster = news.getThumbnail();
+//        Picasso.get()
+//                .load(urlPoster)
+//                .placeholder(R.drawable.image_placeholder)
+//                .error(R.drawable.image_placeholder_error)
+//                .into(binding.newsPoster);
+//
+//
+//
+//
+//
+//    }
     private void setShareButton(String title) {
         binding.btnShare.setOnClickListener(new View.OnClickListener() {
             @Override

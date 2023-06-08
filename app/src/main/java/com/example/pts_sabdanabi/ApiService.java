@@ -25,8 +25,8 @@ public interface ApiService {
             @Field("email") String email,
             @Field("password") String password);
 
-    @GET("https://api-berita-indonesia.vercel.app/antara/terbaru/")
-    Call<NewsTampilan> getDetailNews(@Path("terbaru") String terbaru);
+    @GET("antara/terbaru/")
+    Call<NewsData> getDetailNews();
 
 
 
